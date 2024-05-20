@@ -20,7 +20,7 @@ static int nextchr(void){
 
     ungetc(c, Infile);
 
-    if ('\n' == c)
+    if ('\n' == c || '\\' == c)
         Line++;
     return c;
 }
@@ -72,9 +72,6 @@ int scan (struct token *t){
         break;
     case ';':
         t -> token = Token_SEMI;
-        break;
-    case '\\':
-        t -> token = Token_BSLASH;
         break;
     case '%':
         t -> token = Token_PERCENT;
